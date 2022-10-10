@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Expressions</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:inputText value="#{expressionBean.expression.expr}" />
+            <h:commandButton value="Добавить" action="#{expressionBean.add()}" />
+        </h:form>
+        <h:form>
+        <h:dataTable value="#{expressionBean.expressions}" var="e">
+            <h:column>
+                <f:facet name="header">№</f:facet>
+                #{e.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Expr</f:facet>
+                #{e.expr}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Result</f:facet>
+                #{e.result}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:commandButton value="delete" action="#{expressionBean.delete(e)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Edit</f:facet>
+                <h:commandButton value="edit" action="#{expressionBean.edit(e)}"/>
+            </h:column>
+        </h:dataTable>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
